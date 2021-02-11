@@ -31,7 +31,7 @@ public class Principal {
 	// FacturaCabeceraRepositorio fcRepositorio;
 
 	public Principal() {
-		System.out.println("hola");
+		
 
 	}
 
