@@ -23,6 +23,9 @@ public class Producto {
 	
 	
 	
+	public Producto() {
+		super();
+	}
 	public Producto(String nombre, String descripcion, double precioUnitario, double precioVenta) {
 		super();
 		this.nombre = nombre;

@@ -1,5 +1,6 @@
 package edu.ucacue.facturacion.controlador;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,10 +12,13 @@ import org.springframework.stereotype.Controller;
 import edu.ucacue.facturacion.infraestructura.repositorio.FacturaCabeceraRepositorio;
 import edu.ucacue.facturacion.infraestructura.repositorio.PersonaRepositorio;
 import edu.ucacue.facturacion.infraestructura.repositorio.ProductoRepositorio;
+import edu.ucacue.facturacion.infraestructura.servicios.reporte.PersonaReporteService;
+import edu.ucacue.facturacion.infraestructura.servicios.reporte.ProductoReporteService;
 import edu.ucacue.facturacion.modelo.DetalleFactura;
 import edu.ucacue.facturacion.modelo.FacturaCabecera;
 import edu.ucacue.facturacion.modelo.Persona;
 import edu.ucacue.facturacion.modelo.Producto;
+import net.sf.jasperreports.engine.JRException;
 
 @Controller
 public class Principal {
@@ -27,6 +31,12 @@ public class Principal {
 	
 	@Autowired
 	ProductoRepositorio productoRepositorio;
+	
+	@Autowired
+	PersonaReporteService personaReporteService;
+	
+	@Autowired
+	ProductoReporteService productoReporteService;
 
 	// FacturaCabeceraRepositorio fcRepositorio;
 
@@ -35,7 +45,7 @@ public class Principal {
 
 	}
 
-	public void interfaz() {
+	public void interfaz() throws FileNotFoundException, JRException {
 		Scanner input = new Scanner(System.in);
 		boolean mainLoop = true;
 
@@ -47,6 +57,8 @@ public class Principal {
 			System.out.print("3.) Eliminar.\n");
 			System.out.print("4.) Salir.\n");
 			System.out.print("5.) Generar Factura \n");
+			System.out.print("6.) Generar Reporte Persona \n");
+			System.out.print("7.) Generar Reporte Producto \n");
 
 			System.out.print("\n Ingrese la opcion del Menú: ");
 
@@ -87,6 +99,10 @@ public class Principal {
 
 			case 5:
 				System.exit(0);
+			case 6:	
+				personaReporteService.generarReporte("pdf");
+			case 7:	
+				productoReporteService.generarReoprteProducto("html");
 
 			default:
 
