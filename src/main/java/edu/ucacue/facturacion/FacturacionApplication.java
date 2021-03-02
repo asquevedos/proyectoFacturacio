@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import edu.ucacue.facturacion.controlador.Principal;
 import edu.ucacue.facturacion.controlador.PrincipalUI;
+import edu.ucacue.facturacion.controlador.persona.PersonaUI;
 import net.sf.jasperreports.engine.JRException;
 
 @SpringBootApplication
@@ -20,25 +21,9 @@ public class FacturacionApplication {
 	    .headless(false)
 	    .web(WebApplicationType.NONE)
 	    .run(args);
-		//PrincipalUI ventana = contexto.getBean(PrincipalUI.class);
-		Principal principal= contexto.getBean(Principal.class);
-		principal.interfaz();
-		/* Para insertar
-		Persona persona2= new Persona("Ana", "Perez", "888");
-		Persona persona3= new Persona("Santiago","Lazo","123446");
-		p.insertarPersona(persona2);
-		p.insertarPersona(persona3);
-		*/
-		//p.listarPersonas();
-		
-		//ventana.setVisible(true);
-		//ventana.llenarDatos();
-		//principal.generarFactura();
-		//principal.recuperarFactura();
-		//principal.buscarByNombre();
-		//principal.buscar2();
-		//principal.interfaz();
-		
+
+		PrincipalUI principalUI= contexto.getBean(PrincipalUI.class);
+		principalUI.setVisible(true);
 	}
 
 }
